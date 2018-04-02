@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+<form action="" onsubmit="validate()">
+Name: <input type="text" name="name"  id="name" required/></br>
+Email: <input type="text" name="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="email" required/><br>
+Password: <input type="password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+.{8,}$" id="password" required/><br>
+phone number: <input type="text" name="phone" pattern="^\d{10}$" required/></br>
+Address:<input type="text" name="address" required/></br>
+Url:<input type="url" name="url" required/></br>
+<input type="submit" value="Register" /><br><br><br/>
+
+</form>
+<form name="form1" action="home.html" onsubmit="return login()">
+    Email: <input type="email" name="email2"  id="email2"/><br>
+    Password: <input type="password" name="password2"  id="password2" /><br>
+    <input type="submit" value="Login" />
+</form>
+<script>
+    function validate() {
+        var email = document.getElementById("email").value;
+        localStorage.setItem("email", email);
+        var password = document.getElementById("password").value;
+        localStorage.setItem("password", password);
+        alert("Registeration success..");
+
+    }
+
+    function login()
+    {
+        var email1 = document.getElementById("email2").value;
+        var password1 = document.getElementById("password2").value;
+        var email=localStorage.getItem("email");
+        var password=localStorage.getItem("password");
+        if(email1!=email )
+        {
+            alert("email or password is not correct");
+            return false;
+        }
+        else if (password1 != password)
+        {
+            alert("email or password is not correct");
+            return false;
+        }
+        return true;
+    }
+</script>
+</body>
+</html>
